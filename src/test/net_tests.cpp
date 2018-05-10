@@ -13,6 +13,8 @@
 #include <chainparams.h>
 #include <util.h>
 
+#include <memory>
+
 class CAddrManSerializationMock : public CAddrMan
 {
 public:
@@ -61,7 +63,7 @@ public:
     }
 };
 
-CDataStream AddrmanToStream(CAddrManSerializationMock& _addrman)
+static CDataStream AddrmanToStream(CAddrManSerializationMock& _addrman)
 {
     CDataStream ssPeersIn(SER_DISK, CLIENT_VERSION);
     ssPeersIn << Params().MessageStart();
